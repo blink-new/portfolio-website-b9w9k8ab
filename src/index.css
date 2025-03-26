@@ -3,24 +3,39 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
+
 @layer base {
   body {
-    @apply bg-gray-900 text-white;
+    @apply bg-[#faf8f3] text-[#2d2d2d] font-['Sora'];
   }
 }
 
-.gradient-blur {
-  backdrop-filter: blur(100px);
+.aesthetic-gradient {
+  background: linear-gradient(135deg, #f6e6cb 0%, #f8d9d0 100%);
 }
 
-.glow {
-  box-shadow: 0 0 80px rgb(59 130 246 / 0.15);
+.card-shadow {
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.05);
 }
 
-.glass-card {
-  background: rgba(17, 25, 40, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.12);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#94618E] to-[#49B6FF];
+}
+
+.border-gradient {
+  border: 1px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #94618E, #49B6FF);
 }
 
 .animate-float {
@@ -28,26 +43,7 @@
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500;
-}
-
-.hover-card {
-  transition: all 0.3s ease;
-}
-
-.hover-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }

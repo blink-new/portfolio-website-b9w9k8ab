@@ -7,14 +7,14 @@ const projects = [
   {
     title: 'Tuesday.so',
     description: 'A powerful project management and collaboration platform',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&q=80&w=600',
     tech: ['React', 'Node.js', 'Real-time Collaboration', 'Project Management'],
     liveLink: 'https://tuesday.so',
   },
   {
     title: '1Flow.ai',
     description: 'Advanced AI-powered analytics and user engagement platform',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?auto=format&fit=crop&q=80&w=600',
     tech: ['AI/ML', 'Analytics', 'User Engagement', 'Enterprise Solutions'],
     liveLink: 'https://1flow.ai',
   },
@@ -70,25 +70,18 @@ const FloatingElement = ({ delay = 0, children }) => (
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#030014] text-white">
-      {/* Background Elements */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-[#030014] to-[#030014]" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl" />
-      </div>
-
+    <div className="min-h-screen bg-[#faf8f3]">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
+      <section className="min-h-screen flex items-center justify-center px-4 aesthetic-gradient">
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <FloatingElement>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              Hi, I'm <span className="gradient-text">Manav Kothari</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-[#2d2d2d]">
+              Hi, I'm <span className="text-gradient">Manav Kothari</span>
             </h1>
           </FloatingElement>
           
           <FloatingElement delay={0.2}>
-            <div className="text-xl md:text-2xl text-gray-400 mb-8">
+            <div className="text-xl md:text-2xl text-[#666666] mb-8">
               <TypeAnimation
                 sequence={[
                   'Tech Entrepreneur',
@@ -109,17 +102,17 @@ export default function App() {
                 href="https://www.linkedin.com/in/artem-strekalov-609542234" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-3 glass-card rounded-full hover:scale-110 transition-transform"
+                className="p-3 bg-white rounded-full hover-lift card-shadow"
                 whileHover={{ y: -2 }}
               >
-                <Linkedin size={24} className="text-blue-400" />
+                <Linkedin size={24} className="text-[#94618E]" />
               </motion.a>
               <motion.a 
                 href="mailto:manav@1flow.ai"
-                className="p-3 glass-card rounded-full hover:scale-110 transition-transform"
+                className="p-3 bg-white rounded-full hover-lift card-shadow"
                 whileHover={{ y: -2 }}
               >
-                <Mail size={24} className="text-blue-400" />
+                <Mail size={24} className="text-[#94618E]" />
               </motion.a>
             </div>
           </FloatingElement>
@@ -127,7 +120,7 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-4 relative">
+      <section className="py-20 px-4">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -135,25 +128,24 @@ export default function App() {
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text">Featured Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gradient">Featured Projects</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
-                className="glass-card rounded-xl overflow-hidden hover-card"
+                className="bg-white rounded-xl overflow-hidden hover-lift card-shadow"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
                 <div className="relative">
                   <img src={project.image} alt={project.title} className="w-full h-48 object-cover"/>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#030014] to-transparent"/>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 gradient-text">{project.title}</h3>
-                  <p className="text-gray-400 mb-4">{project.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gradient">{project.title}</h3>
+                  <p className="text-[#666666] mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, i) => (
-                      <span key={i} className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm">
+                      <span key={i} className="px-3 py-1 bg-[#f6e6cb] text-[#94618E] rounded-full text-sm">
                         {tech}
                       </span>
                     ))}
@@ -162,7 +154,7 @@ export default function App() {
                     href={project.liveLink} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300"
+                    className="inline-flex items-center gap-2 text-[#94618E] hover:text-[#49B6FF]"
                     whileHover={{ x: 5 }}
                   >
                     Visit Website <ExternalLink size={16} />
@@ -175,16 +167,15 @@ export default function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent"/>
+      <section className="py-20 px-4 aesthetic-gradient">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-w-6xl mx-auto relative"
+          className="max-w-6xl mx-auto"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text">What People Say</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gradient">What People Say</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -193,19 +184,19 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="glass-card p-6 rounded-xl hover-card"
+                className="bg-white p-6 rounded-xl hover-lift card-shadow"
               >
-                <Quote className="text-blue-500/20 mb-4" size={40} />
-                <p className="text-gray-300 mb-6 italic">"{testimonial.text}"</p>
+                <Quote className="text-[#94618E] mb-4" size={40} />
+                <p className="text-[#666666] mb-6 italic">"{testimonial.text}"</p>
                 <div className="flex items-center gap-4">
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.author}
-                    className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-500/20"
+                    className="w-12 h-12 rounded-full object-cover ring-2 ring-[#f6e6cb]"
                   />
                   <div>
-                    <h4 className="font-semibold gradient-text">{testimonial.author}</h4>
-                    <p className="text-sm text-gray-400">{testimonial.position}</p>
+                    <h4 className="font-semibold text-gradient">{testimonial.author}</h4>
+                    <p className="text-sm text-[#666666]">{testimonial.position}</p>
                   </div>
                 </div>
               </motion.div>
@@ -215,7 +206,7 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-4 relative">
+      <section className="py-20 px-4">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -223,18 +214,18 @@ export default function App() {
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text">Expertise</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gradient">Expertise</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {skills.map((category, index) => (
               <motion.div 
                 key={index} 
-                className="glass-card p-6 rounded-xl hover-card"
+                className="bg-white p-6 rounded-xl hover-lift card-shadow"
                 whileHover={{ scale: 1.02 }}
               >
-                <h3 className="text-xl font-semibold mb-4 gradient-text">{category.name}</h3>
+                <h3 className="text-xl font-semibold mb-4 text-gradient">{category.name}</h3>
                 <div className="flex flex-wrap gap-2">
                   {category.items.map((skill, i) => (
-                    <span key={i} className="px-3 py-1 bg-blue-500/10 rounded-full text-sm text-blue-400">
+                    <span key={i} className="px-3 py-1 bg-[#f6e6cb] rounded-full text-sm text-[#94618E]">
                       {skill}
                     </span>
                   ))}
@@ -246,7 +237,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 aesthetic-gradient">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -254,13 +245,13 @@ export default function App() {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Let's Connect</h2>
-          <p className="text-gray-400 mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient">Let's Connect</h2>
+          <p className="text-[#666666] mb-8">
             Interested in discussing innovative solutions, technical challenges, or potential collaborations? Let's talk.
           </p>
           <motion.a
             href="mailto:manav@1flow.ai"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full hover:scale-105 transition-transform"
+            className="inline-flex items-center gap-2 bg-white text-[#94618E] px-8 py-4 rounded-full hover-lift card-shadow"
             whileHover={{ y: -2 }}
           >
             <Mail size={20} />
