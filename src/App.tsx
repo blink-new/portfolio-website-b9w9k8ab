@@ -56,73 +56,100 @@ const testimonials = [
   }
 ];
 
+const FloatingElement = ({ delay = 0, children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay }}
+    className="animate-float"
+    style={{ animationDelay: `${delay}s` }}
+  >
+    {children}
+  </motion.div>
+);
+
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-[#030014] text-white">
+      {/* Background Elements */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-[#030014] to-[#030014]" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl" />
+      </div>
+
       {/* Hero Section */}
-      <section className="h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/20 via-gray-900 to-gray-900"/>
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center z-10"
-        >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Hi, I'm <span className="text-blue-500">Manav Kothari</span>
-          </h1>
-          <div className="text-xl md:text-2xl text-gray-400 mb-8">
-            <TypeAnimation
-              sequence={[
-                'Tech Entrepreneur',
-                2000,
-                'Product Innovator',
-                2000,
-                'Full Stack Engineer',
-                2000,
-              ]}
-              repeat={Infinity}
-            />
-          </div>
-          <div className="flex gap-4 justify-center">
-            <a 
-              href="https://www.linkedin.com/in/artem-strekalov-609542234" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="p-2 hover:text-blue-500 transition-colors"
-            >
-              <Linkedin size={24} />
-            </a>
-            <a 
-              href="mailto:manav@1flow.ai" 
-              className="p-2 hover:text-blue-500 transition-colors"
-            >
-              <Mail size={24} />
-            </a>
-          </div>
-        </motion.div>
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          <FloatingElement>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              Hi, I'm <span className="gradient-text">Manav Kothari</span>
+            </h1>
+          </FloatingElement>
+          
+          <FloatingElement delay={0.2}>
+            <div className="text-xl md:text-2xl text-gray-400 mb-8">
+              <TypeAnimation
+                sequence={[
+                  'Tech Entrepreneur',
+                  2000,
+                  'Product Innovator',
+                  2000,
+                  'Full Stack Engineer',
+                  2000,
+                ]}
+                repeat={Infinity}
+              />
+            </div>
+          </FloatingElement>
+
+          <FloatingElement delay={0.4}>
+            <div className="flex gap-6 justify-center">
+              <motion.a 
+                href="https://www.linkedin.com/in/artem-strekalov-609542234" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 glass-card rounded-full hover:scale-110 transition-transform"
+                whileHover={{ y: -2 }}
+              >
+                <Linkedin size={24} className="text-blue-400" />
+              </motion.a>
+              <motion.a 
+                href="mailto:manav@1flow.ai"
+                className="p-3 glass-card rounded-full hover:scale-110 transition-transform"
+                whileHover={{ y: -2 }}
+              >
+                <Mail size={24} className="text-blue-400" />
+              </motion.a>
+            </div>
+          </FloatingElement>
+        </div>
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-4 md:px-8">
+      <section className="py-20 px-4 relative">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          className="max-w-6xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text">Featured Projects</h2>
+          <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-800 rounded-lg overflow-hidden"
-                whileHover={{ y: -5 }}
+                className="glass-card rounded-xl overflow-hidden hover-card"
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <img src={project.image} alt={project.title} className="w-full h-48 object-cover"/>
+                <div className="relative">
+                  <img src={project.image} alt={project.title} className="w-full h-48 object-cover"/>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#030014] to-transparent"/>
+                </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2 gradient-text">{project.title}</h3>
                   <p className="text-gray-400 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, i) => (
@@ -131,16 +158,15 @@ export default function App() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-4">
-                    <a 
-                      href={project.liveLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-blue-400 hover:text-blue-300"
-                    >
-                      Visit Website <ExternalLink size={16} />
-                    </a>
-                  </div>
+                  <motion.a 
+                    href={project.liveLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300"
+                    whileHover={{ x: 5 }}
+                  >
+                    Visit Website <ExternalLink size={16} />
+                  </motion.a>
                 </div>
               </motion.div>
             ))}
@@ -149,15 +175,16 @@ export default function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4 md:px-8 bg-gray-800/50">
+      <section className="py-20 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent"/>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-w-6xl mx-auto"
+          className="max-w-6xl mx-auto relative"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">What People Say</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text">What People Say</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -166,18 +193,18 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="bg-gray-800 p-6 rounded-lg relative"
+                className="glass-card p-6 rounded-xl hover-card"
               >
-                <Quote className="absolute top-4 right-4 text-blue-500/20" size={40} />
+                <Quote className="text-blue-500/20 mb-4" size={40} />
                 <p className="text-gray-300 mb-6 italic">"{testimonial.text}"</p>
                 <div className="flex items-center gap-4">
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.author}
-                    className="w-12 h-12 rounded-full object-cover"
+                    className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-500/20"
                   />
                   <div>
-                    <h4 className="font-semibold">{testimonial.author}</h4>
+                    <h4 className="font-semibold gradient-text">{testimonial.author}</h4>
                     <p className="text-sm text-gray-400">{testimonial.position}</p>
                   </div>
                 </div>
@@ -188,7 +215,7 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-4 md:px-8 bg-gray-800">
+      <section className="py-20 px-4 relative">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -196,26 +223,30 @@ export default function App() {
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Expertise</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text">Expertise</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {skills.map((category, index) => (
-              <div key={index} className="bg-gray-900 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4 text-blue-400">{category.name}</h3>
+              <motion.div 
+                key={index} 
+                className="glass-card p-6 rounded-xl hover-card"
+                whileHover={{ scale: 1.02 }}
+              >
+                <h3 className="text-xl font-semibold mb-4 gradient-text">{category.name}</h3>
                 <div className="flex flex-wrap gap-2">
                   {category.items.map((skill, i) => (
-                    <span key={i} className="px-3 py-1 bg-gray-800 rounded-full text-sm">
+                    <span key={i} className="px-3 py-1 bg-blue-500/10 rounded-full text-sm text-blue-400">
                       {skill}
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4 md:px-8">
+      <section className="py-20 px-4">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -223,17 +254,18 @@ export default function App() {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Let's Connect</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Let's Connect</h2>
           <p className="text-gray-400 mb-8">
             Interested in discussing innovative solutions, technical challenges, or potential collaborations? Let's talk.
           </p>
-          <a
+          <motion.a
             href="mailto:manav@1flow.ai"
-            className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full transition-colors"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full hover:scale-105 transition-transform"
+            whileHover={{ y: -2 }}
           >
             <Mail size={20} />
             Get In Touch
-          </a>
+          </motion.a>
         </motion.div>
       </section>
     </div>
