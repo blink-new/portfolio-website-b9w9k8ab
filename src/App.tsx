@@ -1,7 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Quote } from 'lucide-react';
 
 const projects = [
   {
@@ -33,6 +33,27 @@ const skills = [
     name: 'Business', 
     items: ['Product Management', 'Growth Strategy', 'Enterprise Solutions', 'Client Relations'] 
   },
+];
+
+const testimonials = [
+  {
+    text: "Manav's technical expertise and leadership transformed our development process. His innovative approach to problem-solving and ability to execute complex projects is outstanding.",
+    author: "Sarah Chen",
+    position: "CTO, TechVentures",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
+  },
+  {
+    text: "Working with Manav was a game-changer for our startup. His deep understanding of both technical architecture and business strategy helped us scale efficiently.",
+    author: "Michael Rodriguez",
+    position: "Founder, InnovateLabs",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150"
+  },
+  {
+    text: "Manav brings a rare combination of technical depth and strategic thinking. His contributions have been instrumental in our product's success.",
+    author: "Emily Zhang",
+    position: "Product Director, ScaleUp",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+  }
 ];
 
 export default function App() {
@@ -119,6 +140,45 @@ export default function App() {
                     >
                       Visit Website <ExternalLink size={16} />
                     </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 md:px-8 bg-gray-800/50">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-6xl mx-auto"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">What People Say</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="bg-gray-800 p-6 rounded-lg relative"
+              >
+                <Quote className="absolute top-4 right-4 text-blue-500/20" size={40} />
+                <p className="text-gray-300 mb-6 italic">"{testimonial.text}"</p>
+                <div className="flex items-center gap-4">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.author}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <h4 className="font-semibold">{testimonial.author}</h4>
+                    <p className="text-sm text-gray-400">{testimonial.position}</p>
                   </div>
                 </div>
               </motion.div>
