@@ -5,27 +5,34 @@ import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
 const projects = [
   {
-    title: 'Project One',
-    description: 'A full-stack application built with React and Node.js',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    liveLink: '#',
-    githubLink: '#'
+    title: 'Tuesday.so',
+    description: 'A powerful project management and collaboration platform',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600',
+    tech: ['React', 'Node.js', 'Real-time Collaboration', 'Project Management'],
+    liveLink: 'https://tuesday.so',
   },
   {
-    title: 'Project Two',
-    description: 'Mobile-first responsive web application',
-    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=600',
-    tech: ['React Native', 'Firebase'],
-    liveLink: '#',
-    githubLink: '#'
+    title: '1Flow.ai',
+    description: 'Advanced AI-powered analytics and user engagement platform',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
+    tech: ['AI/ML', 'Analytics', 'User Engagement', 'Enterprise Solutions'],
+    liveLink: 'https://1flow.ai',
   },
 ];
 
 const skills = [
-  { name: 'Frontend', items: ['React', 'TypeScript', 'Tailwind CSS'] },
-  { name: 'Backend', items: ['Node.js', 'Python', 'PostgreSQL'] },
-  { name: 'DevOps', items: ['Docker', 'AWS', 'CI/CD'] },
+  { 
+    name: 'Leadership', 
+    items: ['Product Strategy', 'Team Management', 'Technical Architecture', 'Innovation']
+  },
+  { 
+    name: 'Technical', 
+    items: ['Full Stack Development', 'AI/ML', 'System Design', 'Cloud Architecture'] 
+  },
+  { 
+    name: 'Business', 
+    items: ['Product Management', 'Growth Strategy', 'Enterprise Solutions', 'Client Relations'] 
+  },
 ];
 
 export default function App() {
@@ -41,29 +48,34 @@ export default function App() {
           className="text-center z-10"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Hi, I'm <span className="text-blue-500">Your Name</span>
+            Hi, I'm <span className="text-blue-500">Manav Kothari</span>
           </h1>
           <div className="text-xl md:text-2xl text-gray-400 mb-8">
             <TypeAnimation
               sequence={[
-                'Software Engineer',
+                'Tech Entrepreneur',
                 2000,
-                'Full Stack Developer',
+                'Product Innovator',
                 2000,
-                'Problem Solver',
+                'Full Stack Engineer',
                 2000,
               ]}
               repeat={Infinity}
             />
           </div>
           <div className="flex gap-4 justify-center">
-            <a href="#" className="p-2 hover:text-blue-500 transition-colors">
-              <Github size={24} />
-            </a>
-            <a href="#" className="p-2 hover:text-blue-500 transition-colors">
+            <a 
+              href="https://www.linkedin.com/in/artem-strekalov-609542234" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="p-2 hover:text-blue-500 transition-colors"
+            >
               <Linkedin size={24} />
             </a>
-            <a href="#" className="p-2 hover:text-blue-500 transition-colors">
+            <a 
+              href="mailto:manav@1flow.ai" 
+              className="p-2 hover:text-blue-500 transition-colors"
+            >
               <Mail size={24} />
             </a>
           </div>
@@ -99,11 +111,13 @@ export default function App() {
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <a href={project.liveLink} className="flex items-center gap-1 text-blue-400 hover:text-blue-300">
-                      Live Demo <ExternalLink size={16} />
-                    </a>
-                    <a href={project.githubLink} className="flex items-center gap-1 text-blue-400 hover:text-blue-300">
-                      GitHub <Github size={16} />
+                    <a 
+                      href={project.liveLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-blue-400 hover:text-blue-300"
+                    >
+                      Visit Website <ExternalLink size={16} />
                     </a>
                   </div>
                 </div>
@@ -122,7 +136,7 @@ export default function App() {
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Skills & Technologies</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Expertise</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {skills.map((category, index) => (
               <div key={index} className="bg-gray-900 p-6 rounded-lg">
@@ -151,10 +165,10 @@ export default function App() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Let's Connect</h2>
           <p className="text-gray-400 mb-8">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+            Interested in discussing innovative solutions, technical challenges, or potential collaborations? Let's talk.
           </p>
           <a
-            href="mailto:your.email@example.com"
+            href="mailto:manav@1flow.ai"
             className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full transition-colors"
           >
             <Mail size={20} />
